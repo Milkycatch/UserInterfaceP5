@@ -21,7 +21,7 @@ public class DifficultyButom : MonoBehaviour
     {
 
     }
-    void SetDifficulty(int Difficulty) 
+    void SetDifficulty(int difficulty) 
     {
         Debug.Log(button.gameObject.name + " was cliked");
         gameManager.StartGame(difficulty);
