@@ -23,6 +23,8 @@ public class Target : MonoBehaviour
         targetRb.AddForce(RandomForce(), ForceMode.Impulse);
         targetRb.AddTorque(RandomTorque(),RandomTorque(),RandomTorque(),ForceMode.Impulse);
         transform.position = RandomspawnPos();
+         gameManager = GameObject.Find("GameMAnager")
+            .GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -44,9 +46,10 @@ public class Target : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
-        if (!gameObject.CompareTag("bad"))
+        if (!gameObject.CompareTag("bad") && gameManager.isGameActive)
         { 
-            gameManager.GAmeOver();
+           
+            gameManager.UpdateLives(-1);
         }
     }
     Vector3 RandomForce()
